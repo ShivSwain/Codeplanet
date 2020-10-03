@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "@material-ui/core/container";
-import { makeStyles, useTheme ,createMuiTheme ,ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles, useTheme , withStyles , } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -16,7 +16,6 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor:'#040f4f'
   },
   imglogo:
   {
@@ -26,24 +25,46 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:'white',
     margin:'10px 5px'
   },
-  menuButton: {
-    marginRight: theme.spacing(1)
-  },
   title: {
     [theme.breakpoints.down("xs")]: {
       flexGrow: 1
     }
   },
   menuOptions1: {
+    padding:'0px 0px',
+    margin:'0px 0px'
   },
-  h_menuOpt:
-  {
-    margin:"0px",
-    color:'white',
-    varient:'label',
-    padding:'0px'
-  }
+  menuOpt: {
+    padding:'0px',
+    margin:'0px',
+    width:'20px'
+  },
 }));
+
+const StyledTabs = withStyles({
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    '& > span': {
+      maxWidth: 30,
+      width: '100%',
+      backgroundColor: '#f5a11d',
+      padding:'0px'
+    },
+  },
+})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
+
+const StyledTab = withStyles((theme) => ({
+  root: {
+    textTransform: 'none',
+    color: '#fff',
+    padding:'0px',
+    '&:focus': {
+      opacity: 1,
+    },
+  },
+}))((props) => <Tab disableRipple {...props} />);
 
 const Header = () => {
   const classes = useStyles();
@@ -66,23 +87,11 @@ const Header = () => {
     setValue(newValue);
   };
 
-  const themeColor = createMuiTheme({
-    palette: {
-      primary: {
-        main: "#ffc107",
-      },
-      secondary: {
-        main: '#f44336',
-      },
-    },
-  });
-
-
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor:'#040f4f'}}>
       <React.Fragment>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <img src="/images/image_from_ios.png" className={classes.imglogo} />
@@ -121,23 +130,16 @@ const Header = () => {
                 </Menu>
               </>
             ) : (
-              <div className={classes.menuOptions1}>
-                 <ThemeProvider theme={themeColor}>
-                  <Tabs
-                    value={value}
-                    indicatorColor="Primary"
-                    onChange={handleChangeTabC}
-                    >
-                    <Tab label="Home" className={classes.h_menuOpt} />
-                    <Tab label="About" />
-                    <Tab label="Training Course" />
-                    <Tab label="Intership " />
-                    <Tab label=" Our Service" />
-                    <Tab label="Contact Us " />
-                    <Tab label="Blog" />
-                    <Button>Register</Button>
-                  </Tabs> 
-                </ThemeProvider>
+              <div >
+              <StyledTabs className={classes.menuOptions1} value={value} onChange={handleChangeTabC} aria-label="styled tabs example">
+                <StyledTab className={classes.menuOpt} label="Home" />
+                <StyledTab className={classes.menuOpt} label="About" />
+                <StyledTab className={classes.menuOpt} label="Training Course" />
+                <StyledTab className={classes.menuOpt} label="Intership" />
+                <StyledTab className={classes.menuOpt} label="Our Service" />
+                <StyledTab className={classes.menuOpt} label="Contact Us" />
+                <StyledTab className={classes.menuOpt} label="Blog" />
+              </StyledTabs>
               </div>
             )}
           </div>

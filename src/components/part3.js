@@ -41,8 +41,7 @@ const useStyles = makeStyles({
         fontSize:'14px',
         color:'gray',
         boxShadow:'-1px 1px 5px 2px rgba(0, 0, 0, 0.1)',
-
-
+    
     },
     imgs:
     {
@@ -58,7 +57,7 @@ const Part3=() => {
     <>
       <div className={classes.bgbox}>
         <React.Fragment>
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
                 <Grid container >
                     <Grid item xs={4} style={{padding:'0px 40px'}}>
                         <div className={classes.box1}>

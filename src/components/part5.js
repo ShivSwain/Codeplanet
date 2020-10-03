@@ -4,6 +4,9 @@ import Typography from "@material-ui/core/Typography";
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -23,7 +26,7 @@ const useStyles = makeStyles({
     },
     smline:
     {
-        borderBottom:'2px solid #FDA82F',
+        borderBottom:'2px solid #f5a11d',
         width:'50px',
         margin:'auto',
     },
@@ -45,20 +48,19 @@ const useStyles = makeStyles({
     },
     imgs1:
     {
-        maxWidth:'30px',
-        maxHeight:'20px',
+        maxWidth:'40px',
+        maxHeight:'22px',
         position:'relative',
-        top:'4px',
+        top:'2px',
         padding:'0px 3px'
     },
     imgs2:
     {
-        maxWidth:'30px',
-        maxHeight:'20px',
+        maxWidth:'20px',
+        maxHeight:'10px',
         position:'relative',
-        top:'4px',
-        left:'50%',
-        padding:'0px 3px',
+        top:'0',
+        padding:'0px 6px'
     },
     Pview:
     {
@@ -177,36 +179,18 @@ const useStyles = makeStyles({
     },
     img4:
     {
-        
         width:'100%',
         height:'350px',
-
-    },
-    outerbox:
-    {
-        border:'1px solid white',
-        boxShadow:'-1px 1px 5px 6px rgba(0, 0, 0, 0.1)',
-        borderRadius:'16px',
-        margin:'10px 100px',
-
     },
     text2:
     {
-        padding:' 10px 40px',
+        padding:'0px 40px 10px',
         color:'gray'
     },
     text3:
     {
         color:'gray',
         padding:'3px 40px',
-    },
-    imgs2:
-    {
-        maxWidth:'20px',
-        maxHeight:'10px',
-        position:'relative',
-        top:'0',
-        padding:'0px 6px'
     },
     imgs6:
     {
@@ -220,11 +204,14 @@ const useStyles = makeStyles({
     boxnum2:
     {
         border:'1px solid white',
-        boxShadow:'-1px 1px 5px 6px rgba(0, 0, 0, 0.1)',
+        boxShadow:'-1px 1px 2px 3px rgba(0, 0, 0, 0.1)',
         borderRadius:'16px',
-        margin:'40px 150px 10px 150px',
-        textAlign:'center',
-        padding:'10px'
+        margin:'10px 100px',
+        paddind:'0px',
+        '&:hover':
+        {
+            boxShadow:'-1px 1px 3px 4px rgba(0, 0, 0, 0.2)',
+        }
     },
     numtext:
     {
@@ -237,7 +224,6 @@ const useStyles = makeStyles({
 });
 
 function SmallCard(props){
-    
 const classes = useStyles();
     return(
         <>
@@ -288,14 +274,50 @@ const classes = useStyles();
     );
 };
 
+function QuesAnswer(props){ 
+    const classes = useStyles();
+    const [expanded, setExpanded] = React.useState(false);
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
+
+  return(
+      <>
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className={classes.boxnum2}>
+            <AccordionSummary                        >
+                <Typography className={classes.text2} variant='h5' style={{color:'#040f4f'}} >
+                    <img src='/images/question.png' alt='QuestionMark' className={classes.imgs1} />{props.Ques}
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <div>
+                    <Typography className={classes.text2}>All project we take up carry the following guarantees:</Typography>
+                    <Typography className={classes.text3}>
+                        <img src='/images/radio.png' alt='QuestionMark' className={classes.imgs2} />
+                        Confidentiality guarantee: All client details will be kept Confidential
+                    </Typography>
+                    <Typography className={classes.text3}>
+                        <img src='/images/radio.png' alt='QuestionMark' className={classes.imgs2} />
+                        Price guarantee: Minimum 50% cost-saving over on-site development 
+                    </Typography>
+                    <Typography className={classes.text3}>
+                        <img src='/images/radio.png' alt='QuestionMark' className={classes.imgs2} />
+                        Result guarantee: Progress-linked payments weighted toward the end.
+                    </Typography>
+                </div>
+            </AccordionDetails>
+        </Accordion>
+    </>
+    );
+};
+
 const Part5 = () => {
 const classes = useStyles();
-
 
 return(
     <> 
         <React.Fragment>
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
                 <Typography variant="h4" className={classes.text1} >Blog</Typography>
                 <div className={classes.smline} ></div>
                 <Grid container style={{marginTop:'40px'}}>
@@ -322,8 +344,12 @@ return(
                         <img alt='codePlanet' src='/images/image_from_ios.png' className={classes.logoimg} />                            
                         </div>
                         <div className={classes.rightbox}>
-                            <Typography variant='label' className={classes.boxnum1}>Play Store <img alt='playStore' className={classes.imgs3} src='/images/playstore.jpg' /></Typography>
-                            <Typography variant='label' className={classes.boxnum1}>App Store <img alt='AppStore' className={classes.imgs3} src='/images/apple1.jpg' /></Typography>
+                            <Typography variant='label' className={classes.boxnum1}>
+                                Play Store <img alt='playStore' className={classes.imgs3} src='/images/playstore.jpg' />
+                            </Typography>
+                            <Typography variant='label' className={classes.boxnum1}>
+                                App Store <img alt='AppStore' className={classes.imgs3} src='/images/apple1.jpg' />
+                            </Typography>
                             <div style={{display:'flex'}}>
                                 <div style={{margin:'0px 20px'}}>
                                 <Typography variant='h6' className={classes.hnum1}>Rating</Typography>
@@ -356,21 +382,11 @@ return(
                     <div className={classes.imgBox1}>
                         <img alt ='FAQ' src='/images/Asset7.png' className={classes.img4} />
                     </div>
-                    <div className={classes.outerbox}>
-                        <Typography className={classes.text2} variant='h5' style={{color:'#040f4f'}} ><img src='/images/question.png' alt='QuestionMark' className={classes.imgs1} />What benefits can you guarantee?</Typography>
-                        <Typography className={classes.text2}>All project we take up carry the following guarantees:</Typography>
-                        <Typography className={classes.text3}><img src='/images/radio.png' alt='QuestionMark' className={classes.imgs2} />Confidentiality guarantee: All client details will be kept Confidential</Typography>
-                        <Typography className={classes.text3}><img src='/images/radio.png' alt='QuestionMark' className={classes.imgs2} />Price guarantee: Minimum 50% cost-saving over on-site development </Typography>
-                        <Typography className={classes.text3}><img src='/images/radio.png' alt='QuestionMark' className={classes.imgs2} />Result guarantee: Progress-linked payments weighted toward the end.</Typography>
-                    </div>
                 </div>
                 <div>
-                    <div className={classes.boxnum2}>
-                        <Typography className={classes.text2} variant='h5' style={{color:'#040f4f'}} ><img src='/images/question.png' alt='QuestionMark' className={classes.imgs1} style={{minHeight:'25px'}} />How do you assure</Typography>
-                    </div>
-                    <div className={classes.boxnum2}>
-                        <Typography className={classes.text2} variant='h5' style={{color:'#040f4f'}} ><img src='/images/question.png' alt='QuestionMark' className={classes.imgs1} style={{minHeight:'25px'}} />Can you guarantee time-bound results?</Typography>
-                    </div>
+                    <QuesAnswer Ques='What benefits can you guarantee?' />
+                    <QuesAnswer Ques='How do you assure?' />
+                    <QuesAnswer Ques='Can you guarantee time-bound results?' />
                 </div>
             </Container>
     </React.Fragment>

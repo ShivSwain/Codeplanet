@@ -3,9 +3,10 @@ import Container from "@material-ui/core/container";
 import Typography from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import PropTypes from "prop-types";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from "@material-ui/core/Box";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -27,14 +28,14 @@ const useStyles = makeStyles({
     paper: 
     {
         marginTop:'15px',
-        padding:'20px 5px',
+        padding:'18px 5px',
         textAlign: 'center',
         border:'2px solid #040f4f',
         color:'#040f4f',
         borderRadius:'18px',
         fontFamily:'arial',
-        fontSize:'25px',
-        fontWeight:'bolder'
+        fontSize:'22px',
+        fontWeight:'bold'
     },
     text3:
     {
@@ -48,7 +49,7 @@ const useStyles = makeStyles({
     },
     text4:
     {
-        padding:'20px 44px 20px 20px',
+        padding:'10px 62px 10px 20px',
         color:'#040f4f',
         fontFamily:'arial',
         fontSize:'25px',
@@ -57,26 +58,34 @@ const useStyles = makeStyles({
     },
     ulLeftBox:
     {
-        maxWidth: 350,
         backgroundColor: "#040f4f",
         borderTopRightRadius:'30px',
-        borderBottomRightRadius:'30px'
+        borderBottomRightRadius:'30px',
+        maxWidth:'350px',
+        maxHeight:'560px',
+        padding:'0px',
+    },
+    tabs: 
+    {
+        width:'300px',
     },
     links:
     {    
         borderBottom:'1px solid #f5a11d',
         color:'white',
-        padding:'5px',
         fontFamily:'arial',
-        fontSize:'18px',
-        fontWeight:'bolder',
+        fontSize:'15px',
+        padding:'15px 0px',
+        margin:'0px',
+        fontWeight:'bold',
+        opacity:'1',
     },
     hNum1:
     {
         textAlign:'center',
         color:'#040f4f',
         fontWeight:'bold',
-        padding:'20px 0px 10px'
+        padding:'30px 0px 10px'
     },
     imgs:
     {
@@ -109,39 +118,42 @@ const useStyles = makeStyles({
     {
         color:'gray',
         fontSize:'14px',
-        padding:'5px 5px',
+        padding:'5px 20px',
         margin:'auto',
     },
     discountAmt:
     {
         color:'red',
-        padding:'5px 5px',
+        padding:'5px 0px 5px 45px',
         fontSize:'14px',
         margin:'auto'
     },
     amt:
     {
         fontSize:'14px',
-        padding:'0px 35px',
+        padding:'0px 45px',
     },
     outterBox:
     { 
         border:'1px solid lightblue',
         borderBottomRightRadius:'20px',
         borderTopRightRadius:'20px',
+        position:'relative',
+        bottom:'100px'
     },
     hNum2:
     {
         textAlign:'center',
         color:'#040f4f',
-        padding:'20px 0px 0px',
+        padding:'30px 0px 10px',
         fontWeight:'bolder',
     },
     text2:
     {
-        fontSize:'14px',
+        fontSize:'16px',
         textTransform:'capitalize',
-        padding:'5px'
+        padding:'5px',
+        color:'gray'
     },
     
     pDetail:
@@ -185,45 +197,51 @@ const useStyles = makeStyles({
     },
     gaps:
     {
-        margin:'0px 10px 0px 60px'
+        padding:'0px',
+        margin:'0px',
+        maxHeight:'550px'
     },
     img1:
     {
         width:'45px',
         position:'relative',
-        top:'38px',
-        right:'18px'
+        bottom:'60px',
+        right:'18px',
+        zIndex:'1'
     }
   });
 
-  function CoursePart() {
-
+  function CoursePart(props) {
     const classes = useStyles();
     return(
         <>
             <img src='/images/sale1.png' alt='sales' className={classes.img1} />
             <Paper className={classes.outterBox}>
-                <Typography variant='h5' className={classes.hNum1}>Core Java with OCJP</Typography>
-                <Typography className={classes.lbel}><img alt='' src='/images/discount.png' className={classes.imgs} />  10 free content inside</Typography>
-                <div style={{display:'flex'}}>
-                    <Typography className={classes.dateN} ><img alt='icon2' src='/images/sale.png' className={classes.imgs} /> 7 September 2020
+                <Typography variant='h5' className={classes.hNum1}>{props.CName}</Typography>
+                <Typography className={classes.lbel}>
+                    <img alt='' src='/images/discount.png' className={classes.imgs} />  10 free content inside
+                </Typography>
+                <div style={{padding:'10px 0px'}}>
+                    <Typography className={classes.dateN} variant='label' >
+                        <img alt='icon2' src='/images/sale.png' className={classes.imgs} /> 7 September 2020
                     </Typography>
-                    <Typography  className={classes.discountAmt}>10% OFF</Typography>
+                    <Typography  className={classes.discountAmt} variant='label' >10% OFF</Typography>
+                    <Typography className={classes.amt}>Rs. 11,327 /- <s style={{color:'grayText'}}>Rs. 14,327 /-</s></Typography>
                 </div>
-                <Typography className={classes.amt}>Rs. 11,327 /- <s style={{color:'grayText'}}>Rs. 14,327 /-</s></Typography>
-                <div style={{display:'flex'}}>
-                    <Typography className={classes.dateN} ><img alt='icon2' src='/images/sale.png' className={classes.imgs} /> 7 September 2020
+                <div style={{padding:'10px 0px'}}>
+                    <Typography className={classes.dateN} variant='label' >
+                        <img alt='icon2' src='/images/sale.png' className={classes.imgs} /> 7 September 2020
                     </Typography>
-                    <Typography  className={classes.discountAmt}>33% OFF</Typography>
+                    <Typography  className={classes.discountAmt} variant='label' >33% OFF</Typography>
+                    <Typography className={classes.amt}>Rs. 11,327 /- <s style={{color:'grayText'}}>Rs. 14,327 /-</s></Typography>
                 </div>
-                <Typography className={classes.amt}>Rs. 11,327 /- <s style={{color:'grayText'}}>Rs. 14,327 /-</s></Typography>
-
+                
                 <Typography className={classes.hNum2} variant='h5'>Tools you will learn</Typography>
                 <div style={{display:'flex'}}> 
                     <img alt='Cimg' src='/images/tikPic.jpg' className={classes.imgs1} />
                     <Typography className={classes.text2}> java, Eclipse, Apache Tomcat, Github</Typography>
                 </div>
-                <Grid container spacing={1} style={{padding:'20px 7px'}}>
+                <Grid container spacing={1} style={{padding:'40px 7px 20px 7px'}}>
                     <Grid item lg={4}>
                     <img alt='no img' src='/images/payment.png' className={classes.imgs2} />
                     <Paper className={classes.pDetail} style={{backgroundColor:'red'}}>EMI Available</Paper>
@@ -242,8 +260,49 @@ const useStyles = makeStyles({
     );
   };
 
+
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`vertical-tabpanel-${index}`}
+        aria-labelledby={`vertical-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box p={5}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired
+  };
+  
+  function a11yProps(index) {
+    return {
+      id: `vertical-tab-${index}`,
+      "aria-controls": `vertical-tabpanel-${index}`
+    };
+  }
+  
+
 const Course= () => {
     const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return(
         <React.Fragment>
             <Container maxWidth="xl">
@@ -253,57 +312,94 @@ const Course= () => {
                 <div>
                     <Grid container lg={true} spacing={8}>
                         <Grid item xs={4}>
-                        <Paper className={classes.paper} style={{padding:'6px 5px',backgroundColor:'#040f4f',color:'white'}}>Foundaton, Algorithmic <br />& Advanced</Paper>
+                        <Typography className={classes.paper} 
+                                    style={{padding:'2px 5px',backgroundColor:'#040f4f',color:'white'}}>Foundaton, Algorithmic <br />& Advanced</Typography>
                         </Grid>
                         <Grid item xs={4}>
-                        <Paper className={classes.paper}>Data & Development</Paper>
+                        <Typography className={classes.paper}>Data & Development</Typography>
                         </Grid>
                         <Grid item xs={4} >
-                            <div className={classes.paper} style={{display:'flex', padding:'0px',margin:'15px 30px 15px 10px' }}><Typography variant='label' className={classes.text4}>Career Track</Typography> <Typography className={classes.text3}>Limited 50% <br /> Cashback </Typography></div>
+                            <Typography className={classes.paper} style={{display:'flex', padding:'0px',margin:'15px 10px 15px 10px' }}>
+                                <Typography variant='label' className={classes.text4}>Career Track</Typography> 
+                                <Typography className={classes.text3}>Limited 50% <br /> Cashback </Typography>
+                            </Typography>
                         </Grid>
                     </Grid>
                     <Grid container spacing={6} style={{marginTop:'30px'}}>
-                        <Grid item xs={4} className={classes.ulLeftBox}>
-                            <List component="nav">
-                                <ListItem button >
-                                <ListItemText className={classes.links} primary="Java" >hello </ListItemText>
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="Python" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="Machine Learning" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="Data Structure & Algorithm" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="Web Designing" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="c- Programming" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="C++" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="Ethical hacking" className={classes.links} />
-                                </ListItem>
-                                <ListItem button >
-                                <ListItemText primary="Android Development" className={classes.links} />
-                                </ListItem>
-                            </List>
+                        <Grid item xs={4} lg={4} className={classes.ulLeftBox}>
+                            <Tabs orientation="vertical"
+                            onChange={handleChange}
+                            className={classes.tabs}
+                            >
+                            <Tab label="Java" fullWidth={true} className={classes.links} {...a11yProps(0)} />
+                            <Tab label="Python" className={classes.links} {...a11yProps(1)} />
+                            <Tab label="Machine Learning" className={classes.links} {...a11yProps(2)} />
+                            <Tab label="Data Structure & Algorithm" className={classes.links} {...a11yProps(3)} />
+                            <Tab label="Web Designing" className={classes.links} {...a11yProps(4)} />
+                            <Tab label="c- Programming" className={classes.links} {...a11yProps(5)} />
+                            <Tab label="C++" className={classes.links} {...a11yProps(6)} />
+                            <Tab label="Ethical hacking" className={classes.links} {...a11yProps(7)} />
+                            <Tab label="Android Development" className={classes.links} {...a11yProps(8)} />
+                            </Tabs>
                         </Grid>
                         
-                        <Grid item xs={3} className={classes.gaps}>
-                            <CoursePart />
+                        <Grid item xs={4} className={classes.gaps}>
+                            <TabPanel value={value} index={0}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                <CoursePart CName='Core Python with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={2}>
+                                <CoursePart CName='Machine Learning' />
+                            </TabPanel>
+                            <TabPanel value={value} index={3}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={4}>
+                                <CoursePart CName='Web Designing' />
+                            </TabPanel>
+                            <TabPanel value={value} index={5}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={6}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={7}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={8}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
                         </Grid>
-                        
-                        <Grid item xs={3} className={classes.gaps}>
-                        <CoursePart />
-                        </Grid>
-                        <Grid item xs={1}>
-                            <Paper></Paper>
+                        <Grid item xs={4} className={classes.gaps}>
+                            <TabPanel value={value} index={0}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                <CoursePart CName='Core Python with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={2}>
+                                <CoursePart CName='Machine Learning' />
+                            </TabPanel>
+                            <TabPanel value={value} index={3}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={4}>
+                                <CoursePart CName='Web Designing' />
+                            </TabPanel>
+                            <TabPanel value={value} index={5}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={6}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={7}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
+                            <TabPanel value={value} index={8}>
+                                <CoursePart CName='Core Java with OCJP' />
+                            </TabPanel>
                         </Grid>
                     </Grid>
                 </div>

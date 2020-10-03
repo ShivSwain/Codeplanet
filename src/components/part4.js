@@ -29,7 +29,7 @@ const useStyles = makeStyles({
         textTransform:'uppercase',
         color:'#040f4f',
         fontWeight:"bolder",
-
+        fontSize:'38px'
     },
     title3:
     {
@@ -39,6 +39,7 @@ const useStyles = makeStyles({
         fontWeight:"bolder",
         textTransform:'uppercase',
         color:'#040f4f',
+        fontSize:'38px'
     },
     title4:
     {
@@ -59,7 +60,12 @@ const useStyles = makeStyles({
         padding:'10px',
         margin:'5px 10px',
         fontFamily:'Times new roman',
-        fontWeight:'bolder'
+        fontWeight:'bolder',
+        '&:hover': 
+        {
+            backgroundColor:'#f5a11d',
+            boxShadow:'-1px 1px 5px 2px rgba(0, 0, 0, 0.5)',
+        }
     },
     outerbox1:
     {
@@ -90,14 +96,14 @@ const Part4 = () => {
     return(
         <>
             <React.Fragment>
-                <Container maxWidth="xl">
+                <Container maxWidth="lg">
                     <Grid container >
                         <Grid item xs={1}></Grid>
                         <Grid item xs={6} >
                             <div className={classes.Boxnum1}>
                                 <Typography variant='h4' className={classes.title1}> Can't decide</Typography>
-                                <Typography variant='h3' className={classes.title2}> which course</Typography>
-                                <Typography variant='h3' className={classes.title3}> suits best</Typography>
+                                <Typography variant='h4' className={classes.title2}> which course</Typography>
+                                <Typography variant='h4' className={classes.title3}> suits best</Typography>
                                 <Typography variant='h4' className={classes.title4}> for you?</Typography>
                                 <Button className={classes.btn1}>
                                     CONTACT US:  <img alt='gmail' src="/images/gmail.png" className={classes.imgs1} />   info@codeplanet.co.in

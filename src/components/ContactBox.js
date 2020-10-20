@@ -89,7 +89,7 @@ const useStyles = makeStyles({
 
 });
 
-const Part4 = () => {
+const ContactBox = () => {
     const classes = useStyles();
 
 
@@ -145,4 +145,4 @@ const Part4 = () => {
     );
 };
 
-export default Part4;
+export default ContactBox;

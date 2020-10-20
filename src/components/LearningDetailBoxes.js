@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Part3=() => {
+const LearningBox=() => {
     const classes = useStyles();
     
     return (
@@ -58,7 +58,7 @@ const Part3=() => {
       <div className={classes.bgbox}>
         <React.Fragment>
             <Container maxWidth="lg">
-                <Grid container >
+                <Grid container style={{margin:'30px 0px'}}>
                     <Grid item xs={4} style={{padding:'0px 40px'}}>
                         <div className={classes.box1}>
                             <div className={classes.imgBox}>
@@ -121,4 +121,4 @@ const Part3=() => {
       );
 };
 
-export default Part3;
+export default LearningBox;

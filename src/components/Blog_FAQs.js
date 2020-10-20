@@ -311,7 +311,7 @@ function QuesAnswer(props){
     );
 };
 
-const Part5 = () => {
+const BlogBox = () => {
 const classes = useStyles();
 
 return(
@@ -394,4 +394,4 @@ return(
     );
 };
 
-export default Part5;
+export default BlogBox;
